@@ -46,7 +46,7 @@ class MainActivity : AppCompatActivity() {
         val questionTextView = findViewById<TextView>(R.id.questionTextView)
         val scoreTextView = findViewById<TextView>(R.id.scoreTextView)
         questionTextView.text = questions[currentIndex].first
-        scoreTextView.text = "Score: $score / ${questions.size}"
+        scoreTextView.text = getString(R.string.score_text, score, questions.size)
         nextButton.setOnClickListener {
             currentIndex = (currentIndex + 1) % questions.size
             questionTextView.text = questions[currentIndex].first
@@ -69,12 +69,12 @@ class MainActivity : AppCompatActivity() {
                 Toast.makeText(this, "Incorrect", Toast.LENGTH_SHORT).show()
             }
 
-            scoreTextView.text = "Score: $score / ${questions.size}"
+            scoreTextView.text = getString(R.string.score_text, score, questions.size)
 
             if (answeredCount == questions.size) {
                 Toast.makeText(
                     this,
-                    "Final Score: $score / ${questions.size}",
+                    getString(R.string.final_score_text, score, questions.size),
                     Toast.LENGTH_LONG
                 ).show()
             }
